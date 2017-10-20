@@ -1,7 +1,7 @@
 package mvp.http;
 
-import http.example.ls.myapplication.bean.LoginBean;
-import http.example.ls.myapplication.bean.WeatherBean;
+import mvp.bean.LoginBean;
+import mvp.bean.WeatherBean;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

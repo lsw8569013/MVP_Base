@@ -1,22 +1,15 @@
 package http.example.ls.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.IOException;
-
-import http.example.ls.myapplication.bean.WeatherBean;
-import http.example.ls.myapplication.com.base.retrofit.WeatherService;
-import mvp.http.HttpBase;
+import mvp.bean.WeatherBean;
 import mvp.http.MyCallBack;
 import mvp.http.MyRetrfit;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class HttpTestAcy extends AppCompatActivity {
 
@@ -37,50 +30,50 @@ public class HttpTestAcy extends AppCompatActivity {
     }
 
     private void getWeather(String city) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.sojson.com/open/api/")
-                .build();
-
-
-        WeatherService weatherService = retrofit.create(WeatherService.class);
-
-        Call<ResponseBody> mCall = weatherService.getBlog(city);
-
-
-        mCall.enqueue(new Callback<ResponseBody>() {
-
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                try {
-                    tv_test.setText(response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://www.sojson.com/open/api/")
+//                .build();
+//
+//
+//        WeatherService weatherService = retrofit.create(WeatherService.class);
+//
+//        Call<ResponseBody> mCall = weatherService.getBlog(city);
+//
+//
+//        mCall.enqueue(new Callback<ResponseBody>() {
+//
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//
+//                try {
+//                    tv_test.setText(response.body().string());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//            }
+//        });
     }
 
     private void getWeatherT(String city) {
 
-        HttpBase.getService(WeatherService.class)
-                .getBlog("北京").
-                enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
+//        HttpBase.getService(WeatherService.class)
+//                .getBlog("北京").
+//                enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//            }
+//        });
     }
 
 
