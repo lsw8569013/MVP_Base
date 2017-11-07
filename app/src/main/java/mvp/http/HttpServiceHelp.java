@@ -1,5 +1,7 @@
 package mvp.http;
 
+import java.util.Observable;
+
 import mvp.bean.LoginBean;
 import mvp.bean.WeatherBean;
 import okhttp3.RequestBody;
@@ -25,7 +27,11 @@ public class HttpServiceHelp {
         Call<WeatherBean> getWeather(@Query("city") String city);
     }
 
+    public interface getWeatherRX{
 
+        @GET("weather/json.shtml")
+        io.reactivex.Observable<WeatherBean> getWeather(@Query("city") String city);
+    }
 
     /**
      * 登录请求

@@ -1,6 +1,9 @@
 package mvp.http;
 
+import io.reactivex.Observable;
+import mvp.bean.WeatherBean;
 import mvp.http.HttpServiceHelp;
+import rxhttp.ViseHttp;
 
 /**
  * 调用接口
@@ -9,8 +12,13 @@ import mvp.http.HttpServiceHelp;
 public class MyRetrfit {
 
 
-    public static HttpServiceHelp.getWeather getWeatherService() {
-        return HttpBase.getService(HttpServiceHelp.getWeather.class);
+    public static HttpServiceHelp.getWeatherRX getWeatherService() {
+        return HttpBase.getService(HttpServiceHelp.getWeatherRX.class);
     }
 
+    public static Observable<WeatherBean> getService(String city) {
+        return ViseHttp.RETROFIT()
+                .create(HttpServiceHelp.getWeatherRX.class)
+                .getWeather(city);
+    }
 }

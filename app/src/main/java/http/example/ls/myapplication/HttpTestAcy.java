@@ -95,20 +95,20 @@ public class HttpTestAcy extends AppCompatActivity {
 
     private void getWeather4(String city) {
 
-        MyRetrfit.getWeatherService().getWeather("北京")
-                .enqueue(new MyCallBack<WeatherBean>() {
-
-                    @Override
-                    protected void getDataError(Call<WeatherBean> call, Response<WeatherBean> response) {
-
-                    }
-
-                    @Override
-                    protected void onSuccess(Call<WeatherBean> call, Response<WeatherBean> response, WeatherBean weatherBean) {
-                        tv_test.setText(weatherBean.toString()
-                        );
-                    }
-                });
+//        MyRetrfit.getWeatherService().getWeather("北京")
+//                .enqueue(new MyCallBack<WeatherBean>() {
+//
+//                    @Override
+//                    protected void getDataError(Call<WeatherBean> call, Response<WeatherBean> response) {
+//
+//                    }
+//
+//                    @Override
+//                    protected void onSuccess(Call<WeatherBean> call, Response<WeatherBean> response, WeatherBean weatherBean) {
+//                        tv_test.setText(weatherBean.toString()
+//                        );
+//                    }
+//                });
     }
 
     public void getWeatherClick(View view) {

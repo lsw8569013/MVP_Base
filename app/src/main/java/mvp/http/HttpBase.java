@@ -1,6 +1,7 @@
 package mvp.http;
 
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -16,6 +17,7 @@ public class HttpBase {
                 if(retrofit == null){
                     retrofit = new Retrofit.Builder()
                             .addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .baseUrl("http://www.sojson.com/open/api/")
                             .build();
                 }

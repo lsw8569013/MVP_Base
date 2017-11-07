@@ -39,6 +39,11 @@ public class WeatherAcy extends BaseActivity<IWeagherView,WeagherP> implements I
 
     @Override
     public void showWeatherV(WeatherBean weatherBean) {
-        tv_test.setText("mvp"+weatherBean.toString());
+        tv_test.setText("mvp" +weatherBean.toString());
+    }
+
+    @Override
+    public void showWeatherV(String s) {
+        tv_test.setText("mvp" +s);
     }
 }

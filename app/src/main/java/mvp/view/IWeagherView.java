@@ -11,4 +11,5 @@ public interface IWeagherView {
 
     void showWeatherV(WeatherBean weatherBean);
 
+    void showWeatherV(String s);
 }

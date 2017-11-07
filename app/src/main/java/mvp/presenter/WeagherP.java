@@ -1,6 +1,6 @@
 package mvp.presenter;
 
-import http.example.ls.myapplication.bean.WeatherBean;
+import mvp.bean.WeatherBean;
 import mvp.model.WeatherModule;
 import mvp.view.IWeagherView;
 
@@ -18,6 +18,11 @@ public class WeagherP extends BasePresenter<IWeagherView> {
             @Override
             public void onComplete(WeatherBean weatherBean) {
                 getView().showWeatherV(weatherBean);
+            }
+
+            @Override
+            public void onCompleteRX(String s) {
+                getView().showWeatherV(s);
             }
         });
     }
