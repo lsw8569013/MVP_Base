@@ -3,7 +3,7 @@ package utils;
 import com.google.gson.Gson;
 
 public class GsonUtil {
-    private static Gson gson;
+    private volatile static Gson gson;
 
     public static Gson gson() {
         if (gson == null) {
