@@ -1,0 +1,74 @@
+package mvp.view;
+
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BaseView {
+    protected Context mContext;
+    protected T mPresenter;
+    protected View mView;
+    private Unbinder mUnBinder;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        init();
+    }
+
+    private void init() {
+        mContext = getActivity();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mView = inflater.inflate(getLayoutId(), null);
+        return mView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mUnBinder = ButterKnife.bind(this, view);
+        createPresenter();
+        mPresenter.attachView(this);
+        initView(view);
+        initData();
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mUnBinder.unbind();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) mPresenter.detachView();
+        if (mView != null) mView = null;
+        if (mContext != null) mContext = null;
+    }
+
+    public abstract void initView(View view);
+
+    public abstract void initData();
+
+    public abstract int getLayoutId();
+
+    public abstract void createPresenter();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onPageStart(getClass().getName()); //统计页面，"MainScreen"为页面名称，可自定义
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPageEnd(getClass().getName());
+    }
+}
